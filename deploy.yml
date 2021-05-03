@@ -1,0 +1,15 @@
+- name: myapp
+  gather_facts: false
+  hosts: [all]
+  become: yes
+
+  tasks:
+
+    - name: Create myapp
+      docker_container:
+        name: MyApp
+        image: ozharkov/myapp
+        pull: true
+        state: started
+        ports:
+          - "80:80"
